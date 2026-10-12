@@ -1,0 +1,14 @@
+{
+  "name": "cas",
+  "displayName": "C.A.S: Claude Academic Skillset",
+  "version": "1.0.0",
+  "description": "Three study skills that work together: quiz yourself, map how ideas connect, and make Anki flashcards.",
+  "author": {
+    "name": "Connor Nelson",
+    "url": "https://github.com/F1veYearPlan"
+  },
+  "homepage": "https://github.com/F1veYearPlan/claude-academic-skillset",
+  "repository": "https://github.com/F1veYearPlan/claude-academic-skillset",
+  "license": "MIT",
+  "keywords": ["study", "anki", "flashcards", "quiz", "concept-map"]
+}

@@ -8,13 +8,8 @@
   "plugins": [
     {
       "name": "cas",
-      "displayName": "C.A.S: Claude Academic Skillset",
       "source": "./",
-      "description": "Quiz yourself, map how ideas connect, and make Anki flashcards.",
-      "license": "MIT",
-      "repository": "https://github.com/F1veYearPlan/claude-academic-skillset",
-      "keywords": ["study", "anki", "flashcards", "quiz", "concept-map"],
-      "skills": ["./quiz-me", "./cartographer", "./deckhand"]
+      "description": "Quiz yourself, map how ideas connect, and make Anki flashcards."
     }
   ]
 }
