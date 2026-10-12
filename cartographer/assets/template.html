@@ -1,0 +1,204 @@
+<meta charset="utf-8">
+<title>__TITLE__</title>
+<style>
+/*FONTS*/
+/*KATEX*/
+:root{
+  color-scheme: dark;
+  --canvas:#121212; --ink:#e6e3de; --muted:#a19d97; --faint:#3b3935;
+  --chip:#1f1f1f; --line:#d6d2cb;
+  --hand:"Excalifont","Comic Sans MS","Segoe Print",cursive;
+  --note:"Comic Shanns","Comic Sans MS","Chalkboard SE",monospace;
+}
+html,body{height:100%;margin:0;background:var(--canvas);color:var(--ink);overflow:hidden}
+#stage{position:fixed;inset:0;overflow:hidden;touch-action:none;cursor:grab;background:var(--canvas)}
+#stage.drag{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+#ink{position:absolute;left:0;top:0;overflow:visible}
+.node{position:absolute;box-sizing:border-box;padding:16px 22px 18px;font-family:var(--note);font-size:14.5px;line-height:1.45}
+.node.diamond,.node.ellipse{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 44px}
+.node.ellipse{padding:22px 34px}
+.t{font-family:var(--hand);font-size:23px;line-height:1.2;text-align:center;text-wrap:balance}
+.x{font-family:var(--hand);font-size:17px;line-height:1.35;text-align:center;margin-top:6px;color:var(--ink)}
+.ellipse .x{font-family:var(--note);font-size:14px;margin:0}
+.f{background:var(--chip);border-radius:4px;padding:6px 12px;margin:10px auto 2px;width:fit-content;max-width:100%}
+.f .katex-display{margin:0}
+.katex{color:inherit;font-size:1.08em}
+.r{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:3px}
+.r li{padding-left:14px;position:relative}
+.r li::before{content:"·";position:absolute;left:3px;color:var(--muted)}
+.r b,.x b{font-weight:700;color:#fff}
+.note{position:absolute;left:-20px;right:-20px;text-align:center;font-family:var(--note);font-size:13.5px;color:var(--muted);line-height:1.35}
+.note.above{bottom:100%;margin-bottom:10px}
+.note.below{top:100%;margin-top:12px}
+.lbl{position:absolute;transform:translate(-50%,-50%);background:var(--canvas);padding:2px 7px;font-family:var(--hand);font-size:16px;color:var(--ink);max-width:230px;text-align:center;line-height:1.25;white-space:normal}
+.wm{position:absolute;font-family:var(--hand)}
+.wm h1{margin:0;font-weight:400;font-size:52px;color:var(--faint);line-height:1.05}
+.wm p{margin:4px 0 16px;font-size:20px;color:var(--faint)}
+.wm ul{list-style:none;margin:0;padding:0;font-size:19px;display:grid;gap:4px}
+.hud{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;gap:8px;z-index:2}
+.hud button{font-family:var(--hand);font-size:18px;color:var(--ink);background:#1b1b1b;border:1.5px solid #4a4743;border-radius:10px;min-width:44px;height:40px;padding:0 12px;cursor:pointer}
+.hud button:hover{border-color:var(--line)}
+.hud button:focus-visible{outline:2px solid #9b7fe0;outline-offset:2px}
+.hint{position:fixed;left:16px;bottom:calc(22px + env(safe-area-inset-bottom,0px));font-family:var(--note);font-size:13px;color:#6f6b66;z-index:2;pointer-events:none}
+@media (max-width:520px){.hint{display:none}}
+</style>
+
+<div id="stage" aria-label="Mind map. Drag to move, scroll or pinch to zoom.">
+  <div id="world"><svg id="ink" xmlns="http://www.w3.org/2000/svg"></svg><div id="layer"></div></div>
+</div>
+<div class="hint">Drag to move · scroll or pinch to zoom</div>
+<div class="hud">
+  <button id="zout" aria-label="Zoom out">−</button>
+  <button id="zin" aria-label="Zoom in">+</button>
+  <button id="zfit" aria-label="Fit the whole map">Fit</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
+<script id="map-data" type="application/json">/*DATA*/</script>
+<script>
+(function(){
+  const D = JSON.parse(document.getElementById("map-data").textContent);
+  const W = D.world.w, H = D.world.h;
+  const COLORS = { red:"#e0605a", purple:"#a184ea", blue:"#4f93dc", orange:"#e3953c", green:"#52b572", alert:"#ef6a79", none:null };
+  const INK = "#d6d2cb";
+  const stage = document.getElementById("stage"), world = document.getElementById("world");
+  const svg = document.getElementById("ink"), layer = document.getElementById("layer");
+  world.style.width = W + "px"; world.style.height = H + "px";
+  svg.setAttribute("width", W); svg.setAttribute("height", H);
+
+  const alpha = (hex, a) => { const n = parseInt(hex.slice(1), 16); return `rgba(${n>>16},${(n>>8)&255},${n&255},${a})`; };
+
+  // ---------- nodes (HTML first, so we can measure) ----------
+  const byId = {};
+  D.nodes.forEach((n, i) => {
+    const el = document.createElement("div");
+    el.className = "node " + n.shape;
+    el.style.left = n.x + "px"; el.style.top = n.y + "px"; el.style.width = n.w + "px";
+    if (n.h) el.style.height = n.h + "px";
+    el.innerHTML = n.html
+      + (n.above ? `<div class="note above">${n.above}</div>` : "")
+      + (n.below ? `<div class="note below">${n.below}</div>` : "");
+    layer.appendChild(el);
+    byId[n.id] = { ...n, el, seed: 11 + i * 7 };
+  });
+
+  // watermark + legend
+  const wm = document.createElement("div");
+  wm.className = "wm"; wm.style.left = "70px"; wm.style.top = (H - 330) + "px";
+  wm.innerHTML = `<h1>${D.title}</h1><p>${D.subtitle}</p><ul>` +
+    D.legend.map(([c, t]) => `<li style="color:${COLORS[c]}">${t}</li>`).join("") + `</ul>`;
+  layer.appendChild(wm);
+
+  function draw(){
+    if (!window.rough) { setTimeout(draw, 60); return; }
+    const rc = rough.svg(svg);
+    Object.values(byId).forEach(n => { n.h = n.el.offsetHeight; });
+
+    // shapes
+    Object.values(byId).forEach(n => {
+      const { x, y, w, h } = n, col = COLORS[n.color];
+      const base = { stroke: INK, strokeWidth: 1.6, roughness: 1.1, bowing: 1, seed: n.seed };
+      let shape;
+      if (n.shape === "diamond") {
+        shape = rc.polygon([[x+w/2,y],[x+w,y+h/2],[x+w/2,y+h],[x,y+h/2]], base);
+      } else if (n.shape === "ellipse") {
+        shape = rc.ellipse(x+w/2, y+h/2, w, h, { ...base, roughness: 1.4 });
+      } else if (n.shape === "dashed") {
+        shape = rc.path(rrect(x,y,w,h,6), { ...base, stroke: COLORS.alert, strokeWidth: 2.6, strokeLineDash: [2, 7], roughness: 0.6 });
+      } else {
+        const fill = col ? { fill: alpha(col, .42), fillStyle: "hachure", hachureGap: 7, hachureAngle: -41, fillWeight: .9 } : {};
+        shape = rc.path(rrect(x,y,w,h,18), { ...base, ...fill });
+      }
+      svg.appendChild(shape);
+    });
+
+    // edges
+    D.edges.forEach((e, i) => {
+      const a = byId[e.from], b = byId[e.to];
+      if (!a || !b) return;
+      const ca = [a.x+a.w/2, a.y+a.h/2], cb = [b.x+b.w/2, b.y+b.h/2];
+      const mx = (ca[0]+cb[0])/2, my = (ca[1]+cb[1])/2;
+      const dx = cb[0]-ca[0], dy = cb[1]-ca[1], len = Math.hypot(dx, dy) || 1;
+      const q = [mx - dy/len*(e.bend||0), my + dx/len*(e.bend||0)];
+      const s = edgePoint(a, q, 10), t = edgePoint(b, q, 12);
+      const q2 = [ (e.bend ? q[0] : (s[0]+t[0])/2), (e.bend ? q[1] : (s[1]+t[1])/2) ];
+      const o = { stroke: INK, strokeWidth: 1.6, roughness: .8, bowing: .6, seed: 500 + i };
+      if (e.dashed) o.strokeLineDash = [9, 8];
+      svg.appendChild(rc.path(`M${s[0]} ${s[1]} Q${q2[0]} ${q2[1]} ${t[0]} ${t[1]}`, o));
+      const ang = Math.atan2(t[1]-q2[1], t[0]-q2[0]), L = 17, spread = .45;
+      const p1 = [t[0]-L*Math.cos(ang-spread), t[1]-L*Math.sin(ang-spread)];
+      const p2 = [t[0]-L*Math.cos(ang+spread), t[1]-L*Math.sin(ang+spread)];
+      svg.appendChild(rc.linearPath([p1, t, p2], { stroke: INK, strokeWidth: 1.6, roughness: .5, seed: 900 + i }));
+      if (e.label) {
+        const lx = .25*s[0] + .5*q2[0] + .25*t[0], ly = .25*s[1] + .5*q2[1] + .25*t[1];
+        const l = document.createElement("div");
+        l.className = "lbl"; l.style.left = lx + "px"; l.style.top = ly + "px"; l.innerHTML = e.label;
+        layer.appendChild(l);
+      }
+    });
+  }
+
+  function rrect(x,y,w,h,r){
+    return `M${x+r} ${y}L${x+w-r} ${y}Q${x+w} ${y} ${x+w} ${y+r}L${x+w} ${y+h-r}Q${x+w} ${y+h} ${x+w-r} ${y+h}`+
+           `L${x+r} ${y+h}Q${x} ${y+h} ${x} ${y+h-r}L${x} ${y+r}Q${x} ${y} ${x+r} ${y}Z`;
+  }
+  // where a line from the node's centre toward `toward` leaves the node's outline, pushed out by `gap`
+  function edgePoint(n, toward, gap){
+    const cx = n.x+n.w/2, cy = n.y+n.h/2;
+    let dx = toward[0]-cx, dy = toward[1]-cy; const d = Math.hypot(dx, dy) || 1; dx/=d; dy/=d;
+    const hw = n.w/2, hh = n.h/2; let t;
+    if (n.shape === "diamond") t = 1 / (Math.abs(dx)/hw + Math.abs(dy)/hh);
+    else if (n.shape === "ellipse") t = 1 / Math.sqrt((dx*dx)/(hw*hw) + (dy*dy)/(hh*hh));
+    else t = Math.min(Math.abs(dx) > 1e-6 ? hw/Math.abs(dx) : 1e9, Math.abs(dy) > 1e-6 ? hh/Math.abs(dy) : 1e9);
+    return [cx + dx*(t+gap), cy + dy*(t+gap)];
+  }
+
+  // ---------- pan & zoom ----------
+  let k = 1, tx = 0, ty = 0;
+  const apply = () => { world.style.transform = `translate(${tx}px,${ty}px) scale(${k})`; };
+  function fit(){
+    const r = stage.getBoundingClientRect();
+    k = Math.min(r.width / W, r.height / H) * .96;
+    tx = (r.width - W*k) / 2; ty = (r.height - H*k) / 2; apply();
+  }
+  function zoomAt(px, py, f){
+    const nk = Math.max(.12, Math.min(4, k*f)); f = nk / k;
+    tx = px - (px - tx)*f; ty = py - (py - ty)*f; k = nk; apply();
+  }
+  stage.addEventListener("wheel", ev => {
+    ev.preventDefault();
+    const r = stage.getBoundingClientRect();
+    const f = Math.exp(-ev.deltaY * (ev.ctrlKey ? .012 : .0018));
+    zoomAt(ev.clientX - r.left, ev.clientY - r.top, f);
+  }, { passive: false });
+  const pts = new Map(); let last = null;
+  stage.addEventListener("pointerdown", ev => { stage.setPointerCapture(ev.pointerId); pts.set(ev.pointerId, [ev.clientX, ev.clientY]); stage.classList.add("drag"); last = null; });
+  stage.addEventListener("pointermove", ev => {
+    if (!pts.has(ev.pointerId)) return;
+    const prev = pts.get(ev.pointerId); pts.set(ev.pointerId, [ev.clientX, ev.clientY]);
+    if (pts.size === 1) { tx += ev.clientX - prev[0]; ty += ev.clientY - prev[1]; apply(); }
+    else if (pts.size === 2) {
+      const [p, q] = [...pts.values()], r = stage.getBoundingClientRect();
+      const dist = Math.hypot(p[0]-q[0], p[1]-q[1]), mid = [(p[0]+q[0])/2 - r.left, (p[1]+q[1])/2 - r.top];
+      if (last) { tx += mid[0]-last.mid[0]; ty += mid[1]-last.mid[1]; zoomAt(mid[0], mid[1], dist/last.dist); }
+      last = { dist, mid };
+    }
+  });
+  const up = ev => { pts.delete(ev.pointerId); last = null; if (!pts.size) stage.classList.remove("drag"); };
+  stage.addEventListener("pointerup", up); stage.addEventListener("pointercancel", up);
+  const centre = f => { const r = stage.getBoundingClientRect(); zoomAt(r.width/2, r.height/2, f); };
+  document.getElementById("zin").onclick = () => centre(1.3);
+  document.getElementById("zout").onclick = () => centre(1/1.3);
+  document.getElementById("zfit").onclick = fit;
+  addEventListener("keydown", ev => {
+    if (ev.key === "+" || ev.key === "=") centre(1.3);
+    else if (ev.key === "-") centre(1/1.3);
+    else if (ev.key === "0") fit();
+  });
+  addEventListener("resize", fit);
+
+  fit();
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(draw);
+})();
+</script>
