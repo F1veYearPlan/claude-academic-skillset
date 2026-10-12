@@ -1,0 +1,20 @@
+{
+  "name": "f1veyearplan",
+  "description": "C.A.S: three Claude skills for studying. Quiz yourself, map how ideas connect, and make Anki flashcards.",
+  "owner": {
+    "name": "Connor Nelson",
+    "url": "https://github.com/F1veYearPlan"
+  },
+  "plugins": [
+    {
+      "name": "cas",
+      "displayName": "C.A.S: Claude Academic Skillset",
+      "source": "./",
+      "description": "Quiz yourself, map how ideas connect, and make Anki flashcards.",
+      "license": "MIT",
+      "repository": "https://github.com/F1veYearPlan/claude-academic-skillset",
+      "keywords": ["study", "anki", "flashcards", "quiz", "concept-map"],
+      "skills": ["./quiz-me", "./cartographer", "./deckhand"]
+    }
+  ]
+}
