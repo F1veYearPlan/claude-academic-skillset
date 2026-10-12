@@ -96,3 +96,10 @@ Each skill offers the next one once, and never starts it without a yes.
 - **deckhand → quiz-me or cartographer.** If your notes suggest the material is not understood yet, Deckhand says so and offers one of the other two before carding.
 
 A common order is quiz, then a map if the quiz shows it is needed, then cards.
+
+## Contributing & Feedback
+
+If you have an idea for a new skill, an improvement to an existing one, something that's frustrating you or you just want to share you experiences I'd love to hear it:
+
+- **GitHub:** [open an issue](../../issues) or submit a pull request
+- **Discord:** `nahde._`
