@@ -8,6 +8,16 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 | [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another. |
 | [deckhand](deckhand/) | Turns study material into reviewed Anki cloze flashcards, the best way to study is making your own cards, but this beats not doing it at all.|
 
+## Prerequisites
+
+You need Claude: the desktop or web app, or Claude Code. Beyond that, it depends on the skill:
+
+| Skill | What you need |
+|---|---|
+| quiz-me | Nothing extra. |
+| cartographer | [Node.js](https://nodejs.org/) and [Python 3](https://www.python.org/downloads/). The first map downloads its fonts and math renderer. |
+| deckhand | [Anki](https://apps.ankiweb.net/) desktop, version 2.1.54 or newer. |
+
 ## Install
 
 You can install only the skills you want, but I recommend all of them; Claude will suggest one when appropriate if it's missing.
