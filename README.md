@@ -1,11 +1,11 @@
 # C.A.S: Claude Academic Skillset
 
-Three [Claude](https://claude.com/claude-code) skills for studying. Each works alone, and each offers the next one when it fits.
+Three [Claude](https://claude.com/claude-code) skills that all work together to help you study, correct mental models, and build on foundational concepts
 
 | Skill | What it does |
 |---|---|
 | [quiz-me](quiz-me/) | An oral exam on your notes or a topic. Grades strictly, rechecks the core ideas until they hold, and diagnoses wrong mental models. |
-| [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how the ideas and formulas in a chapter derive from each other. |
+| [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas in a chapter or topic derive from each other. |
 | [deckhand](deckhand/) | Turns study material into reviewed Anki cloze flashcards, delivered as an importable file. |
 
 ## Install
@@ -30,9 +30,9 @@ Restart Claude Code, then say **"quiz me on photosynthesis"** to check it works.
 
 **No git, or using the Claude app?** Click **Code → Download ZIP** on this page and unzip it. For Claude Code, copy the three skill folders into your skills folder as above. For the Claude desktop or web app, zip each skill folder on its own and upload it under Skills in Claude's settings.
 
-You can install only the skills you want. A skill that is missing is suggested by name and nothing else breaks.
+You can install only the skills you want, but I recommend all of them; Claude will suggest one when appropriate if it's missing.
 
-## What each skill is for
+## Use Cases
 
 ### quiz-me
 
