@@ -87,7 +87,7 @@ Say: *"make Anki cards from these notes"*, *"card this chapter"*
 Needs [Anki](https://apps.ankiweb.net/) desktop 2.1.54 or newer. Making your own cards is best, but if you would not make them otherwise, this is a good substitute. More detail is in the [Deckhand README](deckhand/README.md).
 
 
-## Contributing & Feedback
+# Contributing & Feedback
 
 If you have an idea for a new skill, an improvement to an existing one, something that's frustrating you or you just want to share you experiences I'd love to hear it:
 
