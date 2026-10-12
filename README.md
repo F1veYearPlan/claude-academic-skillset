@@ -10,13 +10,11 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 
 ## Prerequisites
 
-You need Claude: the desktop or web app, or Claude Code. Beyond that, it depends on the skill:
+You need Claude: the [desktop app](https://claude.ai/download), the [web app](https://claude.ai), or [Claude Code](https://claude.com/claude-code). Beyond that, it depends on the skill:
 
-| Skill | What you need |
-|---|---|
-| quiz-me | Nothing extra. |
-| cartographer | [Node.js](https://nodejs.org/) and [Python 3](https://www.python.org/downloads/). The first map downloads its fonts and math renderer. |
-| deckhand | [Anki](https://apps.ankiweb.net/) desktop, version 2.1.54 or newer. |
+- **quiz-me:** nothing extra.
+- **cartographer:** [Node.js](https://nodejs.org/) and [Python 3](https://www.python.org/downloads/). The first map downloads its fonts and math renderer.
+- **deckhand:** [Anki](https://apps.ankiweb.net/) desktop, version 2.1.54 or newer.
 
 ## Install
 
