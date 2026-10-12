@@ -1,37 +1,33 @@
 # C.A.S: Claude Academic Skillset
 
-Three [Claude](https://claude.com/claude-code) skills that all work together to help you study, correct mental models, and build on foundational concepts
+Three [Claude](https://claude.com/claude-code) skills that all work together to help you study, correct and strengthen mental models, and build on foundational concepts
 
 | Skill | What it does |
 |---|---|
-| [quiz-me](quiz-me/) | An oral exam on your notes or a topic. Grades strictly, rechecks the core ideas until they hold, and diagnoses wrong mental models. |
-| [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another. |
-| [deckhand](deckhand/) | Turns study material into reviewed Anki cloze flashcards. |
+| [quiz-me](quiz-me/) | An oral or written exam on your notes or a topic. Checks the core ideas until they hold, and diagnoses and corrects wrong mental models. |
+| [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another to help you piece it together. |
+| [deckhand](deckhand/) | Turns study material into reviewed Anki cloze-deletion flashcards. |
 
-![A cartographer concept map of price elasticity, drawn from Microeconomics chapters 3-4](docs/cartographer-demo.png)
+![A cartographer concept map of price elasticity](docs/cartographer-demo.png)
 
 *A cartographer map of price elasticity, built from my Microeconomics notes*
 
 > [!TIP]
-> Run quiz-me before deckhand. Carding material you don't understand doesn't stick.
+> Run quiz-me before deckhand, Carding material you don't understand won't stick or help you identify whether a card is good or not. If you're struggling or want to visualize it, use cartographer.
 
-# Prerequisites
+
+## Prerequisites
 
 You'll need Claude: the [desktop app](https://claude.ai/download), the [web app](https://claude.ai), or [Claude Code](https://claude.com/claude-code).
 
 - **quiz-me:** nothing
-- **cartographer:** nothing in the Claude app. In Claude Code, [Node.js](https://nodejs.org/) and [Python 3](https://www.python.org/downloads/)
-- **deckhand:** [Anki](https://apps.ankiweb.net/) desktop, to import the cards it makes
+- **cartographer:** nothing in the Claude app; In Claude Code, [Node.js](https://nodejs.org/) and [Python 3](https://www.python.org/downloads/)
+- **deckhand:** [Anki](https://apps.ankiweb.net/) version 2.1.54 or newer on desktop, to import the cards it makes
 
-> [!IMPORTANT]
-> Deckhand needs Anki desktop 2.1.54 or newer.
 
 # Install Instructions
 
-## Claude app (desktop or web)
-
-> [!IMPORTANT]
-> Skills only run when **code execution** is turned on in your Claude settings.
+### Claude app (desktop or web)
 
 On a paid plan (Pro, Max, Team, or Enterprise):
 
@@ -51,6 +47,10 @@ Plugins added here also sync to Claude Code when you sign in with the same accou
 4. **Upload.** In Claude, open **Customize**, go to **Skills**, and upload each zip.
 
 </details>
+
+> [!IMPORTANT]
+> Skills only run when **code execution** is turned on in your Claude settings.
+
 
 ## Claude Code
 
