@@ -10,8 +10,6 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 
 ![A cartographer concept map of price elasticity](docs/cartographer-demo.png)
 
-*A cartographer map of price elasticity, built from my Microeconomics notes*
-
 > [!TIP]
 > Run quiz-me before deckhand, Carding material you don't understand won't stick or help you identify whether a card is good or not. If you're struggling or want to visualize it, use cartographer.
 
@@ -36,20 +34,12 @@ On a paid plan (Pro, Max, Team, or Enterprise):
 3. **Install.** Install the **C.A.S** plugin. It adds all three skills.
 4. **Check it works.** Start a new chat and say **"quiz me on photosynthesis"**.
 
-Plugins added here also sync to Claude Code when you sign in with the same account.
-
-<details>
-<summary><b>On the free plan, or want only some of the skills?</b></summary>
+On a free plan, or want only some of the skills?
 
 1. **Download.** On this page, click the green **Code** button, then **Download ZIP**.
 2. **Unzip it.** You will see three folders: `quiz-me`, `cartographer`, and `deckhand`.
 3. **Zip each folder on its own.** Right-click a folder and choose **Compress to ZIP file** (Windows) or **Compress** (Mac). Do this for each skill you want.
 4. **Upload.** In Claude, open **Customize**, go to **Skills**, and upload each zip.
-
-</details>
-
-> [!IMPORTANT]
-> Skills only run when **code execution** is turned on in your Claude settings.
 
 
 ## Claude Code
