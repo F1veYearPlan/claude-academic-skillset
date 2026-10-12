@@ -86,16 +86,6 @@ Say: *"make Anki cards from these notes"*, *"card this chapter"*
 
 Needs [Anki](https://apps.ankiweb.net/) desktop 2.1.54 or newer. Making your own cards is best, but if you would not make them otherwise, this is a good substitute. More detail is in the [Deckhand README](deckhand/README.md).
 
-## How they connect
-
-Each skill offers the next one once, and never starts it without a yes.
-
-- **quiz-me → deckhand.** When the quiz shows the understanding is solid, it offers flashcards. Deckhand uses the quiz conversation alongside your notes: missed facts are carded first, things you mixed up become comparison cards, and anything you still hold a wrong model of is held back.
-- **quiz-me → cartographer.** When the facts are there but the connections are not, it offers a map. The map gives the most care to the links you got wrong.
-- **cartographer → quiz-me.** After a map, a quiz checks whether you can explain the connections without looking.
-- **deckhand → quiz-me or cartographer.** If your notes suggest the material is not understood yet, Deckhand says so and offers one of the other two before carding.
-
-A common order is quiz, then a map if the quiz shows it is needed, then cards.
 
 ## Contributing & Feedback
 
