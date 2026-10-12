@@ -10,6 +10,20 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 
 ## Install
 
+You can install only the skills you want, but I recommend all of them; Claude will suggest one when appropriate if it's missing.
+
+### Claude app (desktop or web)
+
+1. **Download.** On this page, click the green **Code** button, then **Download ZIP**.
+2. **Unzip it.** You will see three folders: `quiz-me`, `cartographer`, and `deckhand`.
+3. **Zip each folder on its own.** Right-click a folder and choose **Compress to ZIP file** (Windows) or **Compress** (Mac). Do this for each skill you want.
+4. **Upload.** In Claude, open **Settings**, go to **Skills**, and upload each zip.
+5. **Check it works.** Start a new chat and say **"quiz me on photosynthesis"**.
+
+### Claude Code
+
+Copy the skill folders into your skills folder, then restart Claude Code.
+
 **Mac or Linux**
 
 ```bash
@@ -26,11 +40,7 @@ New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null
 Copy-Item -Recurse -Force .\claude-academic-skillset\quiz-me, .\claude-academic-skillset\cartographer, .\claude-academic-skillset\deckhand "$env:USERPROFILE\.claude\skills\"
 ```
 
-Restart Claude Code, then say **"quiz me on photosynthesis"** to check it works.
-
-**No git, or using the Claude app?** Click **Code → Download ZIP** on this page and unzip it. For Claude Code, copy the three skill folders into your skills folder as above. For the Claude desktop or web app, zip each skill folder on its own and upload it under Skills in Claude's settings.
-
-You can install only the skills you want, but I recommend all of them; Claude will suggest one when appropriate if it's missing.
+**No git?** Follow steps 1 and 2 above, then drag the three folders into `~/.claude/skills/` (on Windows, `%USERPROFILE%\.claude\skills\`).
 
 ## Use Cases
 
