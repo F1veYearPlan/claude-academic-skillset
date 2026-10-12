@@ -8,6 +8,10 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 | [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another. |
 | [deckhand](deckhand/) | Turns study material into reviewed Anki cloze flashcards. |
 
+![A cartographer concept map of price elasticity, drawn from Microeconomics chapters 3-4](docs/cartographer-demo.png)
+
+*A cartographer map of price elasticity, built from my Microeconomics notes*
+
 > [!TIP]
 > Run quiz-me before deckhand. Carding material you don't understand doesn't stick.
 
