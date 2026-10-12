@@ -25,7 +25,9 @@ You'll need Claude: the [desktop app](https://claude.ai/download), the [web app]
 
 # Install Instructions
 
-### Claude app (desktop or web)
+## Claude app (desktop or web)
+
+Skills only run when **code execution** is turned on in your Claude settings.
 
 On a paid plan (Pro, Max, Team, or Enterprise):
 
@@ -37,7 +39,7 @@ On a paid plan (Pro, Max, Team, or Enterprise):
 On a free plan, or want only some of the skills?
 
 1. **Download.** On this page, click the green **Code** button, then **Download ZIP**.
-2. **Unzip it.** Open the `skills` folder inside. You will see three folders: `quiz-me`, `cartographer`, and `deckhand`.
+2. **Unzip it.** Open the `claude-academic-skillset-main` folder (it may be inside another folder with the same name), then the `skills` folder. You will see three folders: `quiz-me`, `cartographer`, and `deckhand`.
 3. **Zip each folder on its own.** Right-click a folder and choose **Compress to ZIP file** (Windows) or **Compress** (Mac). Do this for each skill you want.
 4. **Upload.** In Claude, open **Customize**, go to **Skills**, and upload each zip.
 
