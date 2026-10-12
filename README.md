@@ -8,19 +8,19 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 | [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another. |
 | [deckhand](deckhand/) | Turns study material into reviewed Anki cloze flashcards, the best way to study is making your own cards, but this beats not doing it at all.|
 
-## Prerequisites
+# Prerequisites
 
-You need Claude: the [desktop app](https://claude.ai/download), the [web app](https://claude.ai), or [Claude Code](https://claude.com/claude-code). Beyond that, it depends on the skill:
+You'll need Claude: the [desktop app](https://claude.ai/download), the [web app](https://claude.ai), or [Claude Code](https://claude.com/claude-code).
 
-- **quiz-me:** nothing extra.
-- **cartographer:** [Node.js](https://nodejs.org/) and [Python 3](https://www.python.org/downloads/). The first map downloads its fonts and math renderer.
-- **deckhand:** [Anki](https://apps.ankiweb.net/) desktop, version 2.1.54 or newer.
+- **quiz-me:** nothing
+- **cartographer:** [Node.js](https://nodejs.org/) and [Python 3](https://www.python.org/downloads/)
+- **deckhand:** [Anki](https://apps.ankiweb.net/) desktop, version 2.1.54 or newer
 
-## Install
+# Install Instructions
 
-You can install only the skills you want, but I recommend all of them; Claude will suggest one when appropriate if it's missing.
+You can install only the skills you want, but I recommend all of them.
 
-### Claude app (desktop or web)
+## Claude app (desktop or web)
 
 1. **Download.** On this page, click the green **Code** button, then **Download ZIP**.
 2. **Unzip it.** You will see three folders: `quiz-me`, `cartographer`, and `deckhand`.
@@ -28,7 +28,7 @@ You can install only the skills you want, but I recommend all of them; Claude wi
 4. **Upload.** In Claude, open **Settings**, go to **Skills**, and upload each zip.
 5. **Check it works.** Start a new chat and say **"quiz me on photosynthesis"**.
 
-### Claude Code
+## Claude Code
 
 Copy the skill folders into your skills folder, then restart Claude Code.
 
@@ -50,41 +50,41 @@ Copy-Item -Recurse -Force .\claude-academic-skillset\quiz-me, .\claude-academic-
 
 **No git?** Follow steps 1 and 2 above, then drag the three folders into `~/.claude/skills/` (on Windows, `%USERPROFILE%\.claude\skills\`).
 
-## Use Cases
+# Use Cases
 
-### quiz-me
+## quiz-me
 
 Say: *"quiz me on my cardiac physiology notes"*, *"test me on subnetting"*, *"do I actually get this?"*
 
-- **Before an exam**, to find what you only think you know.
-- **Before making flashcards**, to check the understanding is there first.
-- **When you don't know what to study**, to get an ordered list of what to fix.
-- **After a lecture or chapter**, to catch a wrong mental model before it sets.
-- **To check your notes**, since it grades against the truth and reports errors in the notes themselves.
+- **Before an exam**, to find what you only think you know
+- **Before making flashcards**, to check the understanding is there first, carding material you don't understand is useless
+- **When you don't know what to study**, to get an ordered list of what to fix and where your understanding is shaky
+- **After a lecture or chapter**, to catch a wrong mental model before it sets
+- **To check your notes**, since it grades against the truth and reports errors in the notes themselves without editing them
 
-It asks open questions only, one at a time, with no multiple choice. A core idea you miss comes back later as a new question until you can answer it.
+It asks open questions only, one at a time, with no multiple choice. A core idea you miss comes back later as a new question until you can answer it
 
-### cartographer
+## cartographer
 
 Say: *"map this chapter"*, *"make a concept map of my stats notes"*, *"show how these formulas connect"*
 
-- **When you know the facts but not how they fit together.**
-- **For formula-heavy chapters**, to see which formula is built from which.
-- **As a one-page review sheet** before an exam.
-- **After a quiz** shows that the pieces are not connecting.
+- **When you know the facts but not how they fit together**
+- **For formula-heavy chapters**, to see which formula is built from which
+- **As a one-page review sheet** before an exam
+- **After a quiz** shows that the pieces are not connecting
 
-Needs Node.js and Python. The first map downloads its fonts and math renderer.
+Needs Node.js and Python. The first map downloads its fonts and math renderer
 
-### deckhand
+## deckhand
 
 Say: *"make Anki cards from these notes"*, *"card this chapter"*
 
-- **Once you understand the material** and need it to stick for months.
-- **For fact-heavy subjects**: anatomy, pharmacology, ports and protocols, vocabulary, case law.
-- **For certification prep**, where it reads the exam objectives to decide what matters.
-- **To add to a deck you already have**, matching your tags and avoiding duplicates.
+- **Once you understand the material** and need it to stick long term
+- **For fact-heavy subjects**: anatomy, pharmacology, ports and protocols, vocabulary, case law
+- **For certification prep**, where it reads the exam objectives to decide what matters
+- **To add to a deck you already have**, matching your tags and avoiding duplicates
 
-Needs [Anki](https://apps.ankiweb.net/) desktop 2.1.54 or newer. Making your own cards is best. If you would not make them otherwise, this is a good substitute. More detail is in the [Deckhand README](deckhand/README.md).
+Needs [Anki](https://apps.ankiweb.net/) desktop 2.1.54 or newer. Making your own cards is best, but if you would not make them otherwise, this is a good substitute. More detail is in the [Deckhand README](deckhand/README.md).
 
 ## How they connect
 
