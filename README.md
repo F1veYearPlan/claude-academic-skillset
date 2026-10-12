@@ -4,9 +4,9 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 
 | Skill | What it does |
 |---|---|
-| [quiz-me](quiz-me/) | An oral or written exam on your notes or a topic. Checks the core ideas until they hold, and diagnoses and corrects wrong mental models. |
-| [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another to help you piece it together. |
-| [deckhand](deckhand/) | Turns study material into reviewed Anki cloze-deletion flashcards. |
+| [quiz-me](skills/quiz-me/) | An oral or written exam on your notes or a topic. Checks the core ideas until they hold, and diagnoses and corrects wrong mental models. |
+| [cartographer](skills/cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another to help you piece it together. |
+| [deckhand](skills/deckhand/) | Turns study material into reviewed Anki cloze-deletion flashcards. |
 
 ![A cartographer concept map of price elasticity](docs/cartographer-demo.png)
 
@@ -37,7 +37,7 @@ On a paid plan (Pro, Max, Team, or Enterprise):
 On a free plan, or want only some of the skills?
 
 1. **Download.** On this page, click the green **Code** button, then **Download ZIP**.
-2. **Unzip it.** You will see three folders: `quiz-me`, `cartographer`, and `deckhand`.
+2. **Unzip it.** Open the `skills` folder inside. You will see three folders: `quiz-me`, `cartographer`, and `deckhand`.
 3. **Zip each folder on its own.** Right-click a folder and choose **Compress to ZIP file** (Windows) or **Compress** (Mac). Do this for each skill you want.
 4. **Upload.** In Claude, open **Customize**, go to **Skills**, and upload each zip.
 
@@ -60,7 +60,7 @@ Copy the skill folders into your skills folder, then restart Claude Code.
 ```bash
 git clone https://github.com/F1veYearPlan/claude-academic-skillset.git
 mkdir -p ~/.claude/skills
-cp -r claude-academic-skillset/{quiz-me,cartographer,deckhand} ~/.claude/skills/
+cp -r claude-academic-skillset/skills/{quiz-me,cartographer,deckhand} ~/.claude/skills/
 ```
 
 **Windows (PowerShell)**
@@ -68,10 +68,10 @@ cp -r claude-academic-skillset/{quiz-me,cartographer,deckhand} ~/.claude/skills/
 ```powershell
 git clone https://github.com/F1veYearPlan/claude-academic-skillset.git
 New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null
-Copy-Item -Recurse -Force .\claude-academic-skillset\quiz-me, .\claude-academic-skillset\cartographer, .\claude-academic-skillset\deckhand "$env:USERPROFILE\.claude\skills\"
+Copy-Item -Recurse -Force .\claude-academic-skillset\skills\quiz-me, .\claude-academic-skillset\skills\cartographer, .\claude-academic-skillset\skills\deckhand "$env:USERPROFILE\.claude\skills\"
 ```
 
-**No git?** Download and unzip the repo as in the free-plan steps above, then drag the skill folders into `~/.claude/skills/` (on Windows, `%USERPROFILE%\.claude\skills\`).
+**No git?** Download and unzip the repo as in the free-plan steps above, then drag the folders from `skills` into `~/.claude/skills/` (on Windows, `%USERPROFILE%\.claude\skills\`).
 
 </details>
 
@@ -109,7 +109,7 @@ Say: *"make Anki cards from these notes"*, *"card this chapter"*
 - **For certification prep**, where it reads the exam objectives to decide what matters
 - **To add to a deck you already have**, matching your tags and avoiding duplicates
 
-Needs [Anki](https://apps.ankiweb.net/) desktop 2.1.54 or newer. Making your own cards is best, but if you would not make them otherwise, this is a good substitute. More detail is in the [Deckhand README](deckhand/README.md).
+Needs [Anki](https://apps.ankiweb.net/) desktop 2.1.54 or newer. Making your own cards is best, but if you would not make them otherwise, this is a good substitute. More detail is in the [Deckhand README](skills/deckhand/README.md).
 
 
 # Contributing & Feedback

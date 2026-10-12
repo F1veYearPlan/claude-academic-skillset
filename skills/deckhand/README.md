@@ -33,7 +33,7 @@ The review pipeline additionally follows current research on LLM-generated flash
 
 ## Installation
 
-Deckhand is part of [C.A.S](../README.md#install). The install steps there copy it into your skills folder along with the other two skills. To install only Deckhand, copy just the `deckhand` folder.
+Deckhand is part of [C.A.S](../../README.md#install-instructions). The install steps there add it along with the other two skills. To install only Deckhand, use the manual steps there and copy just the `deckhand` folder.
 
 The result should be `…/.claude/skills/deckhand/SKILL.md`. Restart Claude Code (or reload Cowork) so it picks up the new skill. Confirm it's loaded by asking Claude to "make some Anki cards" and it should invoke Deckhand.
 
