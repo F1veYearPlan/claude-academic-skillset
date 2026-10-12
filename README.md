@@ -5,8 +5,8 @@ Three [Claude](https://claude.com/claude-code) skills that all work together to 
 | Skill | What it does |
 |---|---|
 | [quiz-me](quiz-me/) | An oral exam on your notes or a topic. Grades strictly, rechecks the core ideas until they hold, and diagnoses wrong mental models. |
-| [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas in a chapter or topic derive from each other. |
-| [deckhand](deckhand/) | Turns study material into reviewed Anki cloze flashcards, delivered as an importable file. |
+| [cartographer](cartographer/) | Draws a zoomable, hand-drawn map of how ideas and formulas connect or derive from one another. |
+| [deckhand](deckhand/) | Turns study material into reviewed Anki cloze flashcards, the best way to study is making your own cards, but this beats not doing it at all.|
 
 ## Install
 
