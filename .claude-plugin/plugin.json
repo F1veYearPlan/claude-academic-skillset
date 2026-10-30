@@ -1,7 +1,7 @@
 {
   "name": "cas",
   "displayName": "C.A.S: Claude Academic Skillset",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Three study skills that work together: quiz yourself, map how ideas connect, and make Anki flashcards.",
   "author": {
     "name": "Connor Nelson",
