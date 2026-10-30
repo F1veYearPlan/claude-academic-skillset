@@ -21,6 +21,7 @@ These hold for the whole session. Each has a reason; keep the reason in mind whe
    - Never put the method inside the question itself: no "use the mid-point method to find...", no "multiply the elasticity by...", no "start by finding the average". Give the situation and ask for the result, the way a real exam would.
    - Give a hint or a walkthrough only when the user asks for one, and give only as much as they ask for.
 7. **No flattery, no cushioning.** State the actual strength of each answer. Details in the grading section.
+8. **"Reasoning" and "thinking" always mean the user's.** Every request in this skill for reasoning, thinking, or a walkthrough is about the answer the user submitted, so tie it to their own words: "You wrote $85. How did you get that number?" Your own working stays out of the conversation. Give short explanations of the subject and of the grade, not an account of how you reached them.
 
 ## Step 1: Get the material
 
@@ -95,7 +96,9 @@ Then ask the first question in the same message.
 
 Follow-up probes do not count toward the total:
 
-`[Follow-up 2a] You said the ventricle pulls blood in. What is doing the pulling?`
+`[Follow-up 2a] Question 2 asked how blood fills the heart. You wrote that "the ventricle pulls blood in." What is doing the pulling?`
+
+Every follow-up must be answerable without scrolling. Restate the scenario with all of its numbers and the question being asked, then quote the part of the user's answer you are probing, then ask for anything new. When a question includes irrelevant details on purpose, repeat them all, so the restatement does not reveal which details matter.
 
 Rechecks of a missed core idea do not count toward the total either:
 
@@ -107,7 +110,9 @@ If you add or drop questions mid-quiz because of what you are finding, update th
 
 Grade right after each answer, before the next question.
 
-**Lead with one of these verdicts, in bold:**
+**Hold the verdict when a step is unstated.** Users often skip a step because typing it out seemed unnecessary, not because they don't have it. If what they wrote is right as far as it goes but leaves out a step or the numbers behind it, ask for that first, as a follow-up, and give no verdict yet. Keep the ask neutral: no grading language, nothing that says whether the answer is right, and nothing that gives the missing step away. Ask once per question, then grade the original answer and the reply together. What they still don't supply counts as absent. Do not hold when something they wrote is wrong; grade that as usual.
+
+**When you give the verdict, lead with one of these, in bold:**
 
 - **Correct**: accurate and complete for the level, with sound reasoning.
 - **Mostly correct**: the core is right; a minor piece is missing or loosely worded.
@@ -119,12 +124,12 @@ Grade right after each answer, before the next question.
 **Then say exactly what earned the verdict**: what was right, what was missing, what was wrong. Name the specific words or claims. Follow with the correct explanation, kept short.
 
 **How to grade honestly:**
-- Grade what the user wrote. You may acknowledge what they probably meant, but do not fill gaps in their favour; that is the most common way a quiz lies to a learner. If the key step is absent, it is absent.
+- Grade what the user wrote. You may acknowledge what they probably meant, but do not fill gaps in their favour; that is the most common way a quiz lies to a learner. If the key step is absent, ask for it as above; if it is still absent after you ask, it is absent.
 - Do not soften. No "great job", no "so close", no praise as padding. If an answer is correct, say **Correct** and why, and move on. Warmth comes from taking their learning seriously, not from rounding up.
 - Do not round down either. Do not invent faults to seem strict. If the answer is right, a different wording from yours is not a flaw.
 - For **Too vague to grade**, ask a follow-up that forces the specifics before you give a verdict or the answer.
-- For **Partial**, **Incorrect**, and **Right answer, wrong reasoning**, probe before you explain when the cause is unclear. Ask "walk me through why" or a pointed follow-up. One wrong answer tells you that something is off; the follow-up tells you what. Once you explain the right answer, the chance to see their model is gone, so probe first.
-- Probe a **Correct** or **Mostly correct** answer too when it looks fragile: it reads as recited, it states the result without the why, or the user got there but hedged or could not move the idea around. Ask "walk me through why" once before moving on. You are checking what sits underneath: a wrong model, no model at all, or a right model that is only unpractised (see Step 6). If the probe shows the reasoning is wrong, change the verdict to **Right answer, wrong reasoning**. Do not probe every correct answer; a confident, well-reasoned one needs nothing more.
+- For **Partial**, **Incorrect**, and **Right answer, wrong reasoning**, probe before you explain when the cause is unclear. Ask how they got a specific thing they wrote, or another pointed follow-up. One wrong answer tells you that something is off; the follow-up tells you what. Once you explain the right answer, the chance to see their model is gone, so probe first.
+- Probe a **Correct** or **Mostly correct** answer too when it looks fragile: it reads as recited, or the user got there but hedged or could not move the idea around. Once before moving on, ask why what they wrote holds. You are checking what sits underneath: a wrong model, no model at all, or a right model that is only unpractised (see Step 6). If the probe shows the reasoning is wrong, change the verdict to **Right answer, wrong reasoning**. Do not probe every correct answer; a confident, well-reasoned one needs nothing more.
 - "I don't know" is a good, honest answer. Mark it as a gap, explain briefly, and move on without fuss.
 - Do not routinely ask the user to rate their confidence. If they express uncertainty or hedge, take that into account; ask how sure they are only when clarifying it would change the diagnosis or what they should study next.
 - If you are not sure of a fact while grading, check it before marking the user wrong. Say so when your own confidence is limited.
@@ -145,7 +150,7 @@ After the last question, look across all the answers for patterns. Sort each pro
 
 - **Missing fact**: they simply didn't know it. Fix: learn it; a good flashcard candidate.
 - **Wrong model**: their picture of how the thing works is off, and several answers follow from that one picture. Fix: replace the model. Flashcards will not help until this is done.
-- **Fragile knowledge**: they can state it but cannot reliably explain, connect, or apply it. This is a symptom, not a cause, and one of the most common problems, so find the cause before choosing a fix. Rule out the serious ones first, using what the "walk me through why" probes in Step 5 showed:
+- **Fragile knowledge**: they can state it but cannot reliably explain, connect, or apply it. This is a symptom, not a cause, and one of the most common problems, so find the cause before choosing a fix. Rule out the serious ones first, using what the probes in Step 5 showed:
   - a **wrong model** underneath (treat it as one, above);
   - **no model**: the fact was memorised with nothing behind it. Fix: build the model; a concept map can help;
   - a **right model that is unpractised**. Only here is the fix more application practice.
